@@ -4,13 +4,12 @@ on:
     branches:
       - main
   schedule:
-    # - cron: '0 0 * * 0-6'
-    - cron: '* * * * *'
+    - cron: '0 0 * * 0-6'
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Upgrade
+    - name: Update and Dist-Upgrade
       run: |
-        chmod +x update.sh && ./update.sh
+        sudo apt-get -y update && sudo apt-get -y dist-upgrade
