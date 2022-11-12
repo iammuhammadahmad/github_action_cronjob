@@ -1,0 +1,16 @@
+name: Start Job At 12:00 AM, Sunday through Saturday
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # - cron: '0 0 * * 0-6'
+    - cron: '* * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Upgrade
+      run: |
+        chmod +x update.sh && ./update.sh
